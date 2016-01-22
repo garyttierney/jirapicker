@@ -1,0 +1,11 @@
+// -*- mode: javascript -*-
+// vi: set ft=javascript :
+
+{
+    "username": "uname",
+    "password": "pword",
+    "url": "http(s)://my-jira-instance/",
+    "my_issues": false, // optional - set to true to only list issues assigned to you
+    "project": null // optional - set to the name of a project to get issues from there
+}
+
