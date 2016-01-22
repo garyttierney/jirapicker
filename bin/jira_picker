@@ -1,0 +1,19 @@
+#!/bin/ruby
+
+require 'jira_picker'
+require 'json'
+
+rc = File.read("#{Dir.home}/.jirapickerrc")
+opts = JSON.parse(rc)
+
+puts opts
+
+selector = JiraPicker::IssueSelector.new(
+    opts["url"],
+    opts["username"],
+    opts["password"],
+    my_issues: opts["my_issues"] || false,
+    project: opts["project"] || nil
+)
+
+selector.open
