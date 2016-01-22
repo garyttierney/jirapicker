@@ -40,6 +40,16 @@ module JiraPicker
             end
 
             selected_issue = `echo -e "#{issues.join("\n")}" | dmenu -l 20`
+            selected_issue_key = /(.*) \- .*/.match(selected_issue)
+
+            browser = case RbConfig::CONFIG['host_os']
+                when /mswin/ then "start";
+                when /darwin/ then "open";
+                when /linux|bsd/ then "xdg-open";
+                else fail 'Couldn\'t identify host OS'
+            end
+
+            exec("#{browser} '#{@url}/browse/#{selected_issue_key[1]}'")
         end
     end
 end
